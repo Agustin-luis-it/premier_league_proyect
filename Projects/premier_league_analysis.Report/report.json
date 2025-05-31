@@ -1,5 +1,5 @@
 {
-  "config": "{\"version\":\"5.64\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.64\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "config": "{\"version\":\"5.64\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.64\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
   "layoutOptimization": 0,
   "resourcePackages": [
     {
@@ -27,13 +27,40 @@
       "name": "fd071ae065f36fcf69d8",
       "visualContainers": [
         {
-          "config": "{\"name\":\"a6623f461b3223241fc2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":75.96757306530257,\"y\":56.363038080708364,\"z\":0,\"width\":1127.2607616141672,\"height\":664.103622603129,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"Min(dim_players.Player)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_players\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Player\"}},\"Function\":3},\"Name\":\"Min(dim_players.Player)\",\"NativeReferenceName\":\"First Player\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"image\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"imageType\":{\"expr\":{\"Literal\":{\"Value\":\"'imageUrl'\"}}}},\"selector\":{\"id\":\"default\"}}]}}}",
+          "config": "{\"name\":\"54b75cade3f1df17ef4b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":236.96202531645568,\"y\":212.65822784810126,\"z\":2002,\"width\":844.5569620253165,\"height\":178.2278481012658,\"tabOrder\":2002}}],\"singleVisual\":{\"visualType\":\"multiRowCard\",\"projections\":{\"Values\":[{\"queryRef\":\"dim_players.Equipo\"},{\"queryRef\":\"dim_players.image URL\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_players\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Equipo\"},\"Name\":\"dim_players.Equipo\",\"NativeReferenceName\":\"Equipo\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"image URL\"},\"Name\":\"dim_players.image URL\",\"NativeReferenceName\":\"image URL\"}]},\"drillFilterOtherVisuals\":true}}",
           "filters": "[]",
-          "height": 664.10,
-          "width": 1127.26,
-          "x": 75.97,
-          "y": 56.36,
-          "z": 0.00
+          "height": 178.23,
+          "width": 844.56,
+          "x": 236.96,
+          "y": 212.66,
+          "z": 2002.00
+        },
+        {
+          "config": "{\"name\":\"80e737d12ad5df13b28d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":390.88607594936707,\"z\":2003,\"width\":1002.5316455696202,\"height\":182.27848101265823,\"tabOrder\":2003}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"shape\":[{\"properties\":{\"tileShape\":{\"expr\":{\"Literal\":{\"Value\":\"'rectangle'\"}}}}}],\"rotation\":[{\"properties\":{\"shapeAngle\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"fill\":[{\"properties\":{\"fillColor\":{\"solid\":{\"color\":{\"expr\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"dim_players\"}},\"Property\":\"_page_color_team\"}}}}}},\"selector\":{\"id\":\"default\"}}]}},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 182.28,
+          "width": 1002.53,
+          "x": 0.00,
+          "y": 390.89,
+          "z": 2003.00
+        },
+        {
+          "config": "{\"name\":\"d7de967ce6f65f9952e5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":660.253164556962,\"y\":18.22784810126582,\"z\":2001,\"width\":526.5822784810126,\"height\":81.01265822784809,\"tabOrder\":2001}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"dim_players.Player\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_players\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Player\"},\"Name\":\"dim_players.Player\",\"NativeReferenceName\":\"Player\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_players\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Player\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Kevin De Bruyne'\"}}]]}}}]}},\"selfFilterEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"selfFilter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_players\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Contains\":{\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Player\"}},\"Right\":{\"Literal\":{\"Value\":\"'de b'\"}}}},\"Annotations\":{\"PowerBI.MParameterBehavior\":1}}]}}}}],\"selection\":[{\"properties\":{\"selectAllCheckboxEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 81.01,
+          "width": 526.58,
+          "x": 660.25,
+          "y": 18.23,
+          "z": 2001.00
+        },
+        {
+          "config": "{\"name\":\"e06c787252d5683aa553\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":2000,\"width\":556.9620253164557,\"height\":182.27848101265823,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"Sum(dim_players.new_cards)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_players\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"new_cards\"}},\"Function\":0},\"Name\":\"Sum(dim_players.new_cards)\",\"NativeReferenceName\":\"Sum of new_cards\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"new_cards\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"image\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"imageType\":{\"expr\":{\"Literal\":{\"Value\":\"'imageUrl'\"}}},\"imageUrl\":{\"expr\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"dim_players\"}},\"Property\":\"image URL\"}},\"Function\":3}}},\"position\":{\"expr\":{\"Literal\":{\"Value\":\"'Left'\"}}},\"padding\":{\"expr\":{\"Literal\":{\"Value\":\"30L\"}}},\"size\":{\"expr\":{\"Literal\":{\"Value\":\"150L\"}}}},\"selector\":{\"id\":\"default\"}}],\"layout\":[{\"properties\":{\"maxTiles\":{\"expr\":{\"Literal\":{\"Value\":\"2L\"}}},\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"2D\"}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"visualHeader\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 182.28,
+          "width": 556.96,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 2000.00
         }
       ],
       "width": 1280.00

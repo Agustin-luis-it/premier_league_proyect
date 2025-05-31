@@ -1,6 +1,40 @@
 table dim_players
 	lineageTag: bfbf75c0-5c66-4f73-9fba-bd286799b10d
 
+	measure _selected_image_url = SELECTEDVALUE(dim_players[image URL])
+		lineageTag: de2a3cfd-4d91-4398-821c-8c8d90a8b0a2
+		dataCategory: ImageUrl
+
+	measure _page_color_team = ```
+			
+			SWITCH(
+			    SELECTEDVALUE(dim_players[Equipo]),
+			    "Arsenal", "#EF0107",            -- Rojo Arsenal
+			    "Aston Villa", "#670E36",        -- Bordó oscuro
+			    "Bournemouth", "#DA291C",        -- Rojo intenso
+			    "Brentford", "#E30613",          -- Rojo
+			    "Brighton", "#0057B8",           -- Azul Brighton
+			    "Burnley", "#6C1D45",            -- Bordó clásico
+			    "Chelsea", "#034694",            -- Azul Chelsea
+			    "Crystal Palace", "#1B458F",     -- Azul fuerte
+			    "Everton", "#003399",            -- Azul Everton
+			    "Fulham", "#000000",             -- Negro
+			    "Liverpool", "#C8102E",          -- Rojo Liverpool
+			    "Luton Town", "#FB6E00",         -- Naranja
+			    "Manchester City", "#6CABDD",    -- Celeste City
+			    "Manchester United", "#DA291C",  -- Rojo United
+			    "Newcastle United", "#241F20",   -- Negro Newcastle
+			    "Nottingham Forest", "#E53233",  -- Rojo
+			    "Sheffield United", "#EE2737",   -- Rojo claro
+			    "Tottenham Hotspur", "#132257",  -- Azul oscuro
+			    "West Ham United", "#7A263A",    -- Bordó clásico
+			    "Wolverhampton Wanderers", "#FDB913", -- Amarillo Wolves
+			    "#BFBFBF"                         -- Color por defecto (gris claro)
+			)
+			
+			```
+		lineageTag: b6c793fe-cf98-4457-9d6b-879c9d93160f
+
 	column RL
 		dataType: int64
 		formatString: 0
@@ -175,6 +209,13 @@ table dim_players
 		lineageTag: 867d5c6c-fac8-4c01-a750-ff8d69a42911
 		summarizeBy: sum
 		sourceColumn: TR
+
+		annotation SummarizationSetBy = Automatic
+
+	column new_cards
+		type: calculated
+		lineageTag: 79599d67-63fd-4e46-bbd6-6ba61396934e
+		summarizeBy: sum
 
 		annotation SummarizationSetBy = Automatic
 
