@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "premier_league_analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4fbdf5b5-c652-47a7-a048-885b5f9b5f3f"
+  }
+}

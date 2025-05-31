@@ -1,0 +1,194 @@
+table dim_players
+	lineageTag: bfbf75c0-5c66-4f73-9fba-bd286799b10d
+
+	column RL
+		dataType: int64
+		formatString: 0
+		lineageTag: fc3a8c56-bb91-4f1a-bb1f-ca87bd0bdc8c
+		summarizeBy: sum
+		sourceColumn: RL
+
+		annotation SummarizationSetBy = Automatic
+
+	column Player
+		dataType: string
+		lineageTag: 26f711b6-2946-4570-a7e9-e76d8a9605b8
+		summarizeBy: none
+		sourceColumn: Player
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'image URL'
+		dataType: string
+		lineageTag: 8ed86be0-03e8-46e0-8d78-477cb2e5c693
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: image URL
+
+		annotation SummarizationSetBy = Automatic
+
+	column País
+		dataType: string
+		lineageTag: 9da0759c-245f-401e-a53b-2ddd10ed8d91
+		summarizeBy: none
+		sourceColumn: País
+
+		annotation SummarizationSetBy = Automatic
+
+	column Position
+		dataType: string
+		lineageTag: 2fd5effa-35f2-4450-9f0d-f2ce2dbc68e0
+		summarizeBy: none
+		sourceColumn: Position
+
+		annotation SummarizationSetBy = Automatic
+
+	column Equipo
+		dataType: string
+		lineageTag: b1dcf303-1ff8-4362-8d2e-29275af9207d
+		summarizeBy: none
+		sourceColumn: Equipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Edad
+		dataType: int64
+		formatString: 0
+		lineageTag: 3313953d-1449-4151-8275-8be0e32f0158
+		summarizeBy: sum
+		sourceColumn: Edad
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nacimiento
+		dataType: int64
+		formatString: 0
+		lineageTag: 8bb744bc-9697-4fa7-ba8f-08271b886ce8
+		summarizeBy: sum
+		sourceColumn: Nacimiento
+
+		annotation SummarizationSetBy = Automatic
+
+	column PJ
+		dataType: int64
+		formatString: 0
+		lineageTag: 57fc2d38-8b95-45b7-b1e9-541c801af0cb
+		summarizeBy: sum
+		sourceColumn: PJ
+
+		annotation SummarizationSetBy = Automatic
+
+	column Titular
+		dataType: int64
+		formatString: 0
+		lineageTag: 2688fda1-f411-4db4-8a15-8aed7b9cd131
+		summarizeBy: sum
+		sourceColumn: Titular
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mín
+		dataType: double
+		lineageTag: 5b7ed9b3-5931-47c9-95ef-b4167526995d
+		summarizeBy: sum
+		sourceColumn: Mín
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column '90 s'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a5a5319-ade9-4bf4-9b35-4a69e0a96a08
+		summarizeBy: sum
+		sourceColumn: 90 s
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Gls.'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9cc090a1-9884-476e-b112-c936187496cc
+		summarizeBy: sum
+		sourceColumn: Gls.
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ass
+		dataType: int64
+		formatString: 0
+		lineageTag: 799986f6-2342-4c18-aa58-d393ce930ac4
+		summarizeBy: sum
+		sourceColumn: Ass
+
+		annotation SummarizationSetBy = Automatic
+
+	column G+A
+		dataType: int64
+		formatString: 0
+		lineageTag: 3867e04d-b38c-494f-b3ce-546b909801fb
+		summarizeBy: sum
+		sourceColumn: G+A
+
+		annotation SummarizationSetBy = Automatic
+
+	column G-TP
+		dataType: int64
+		formatString: 0
+		lineageTag: f8b3180b-f551-415f-8234-b38767ebf38c
+		summarizeBy: sum
+		sourceColumn: G-TP
+
+		annotation SummarizationSetBy = Automatic
+
+	column TP
+		dataType: int64
+		formatString: 0
+		lineageTag: ed400683-ee4f-492a-8239-c688af9b5fcd
+		summarizeBy: sum
+		sourceColumn: TP
+
+		annotation SummarizationSetBy = Automatic
+
+	column TPint
+		dataType: int64
+		formatString: 0
+		lineageTag: a5424487-53dd-46ff-82f3-bc4c324beac5
+		summarizeBy: sum
+		sourceColumn: TPint
+
+		annotation SummarizationSetBy = Automatic
+
+	column TA
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c12ef28-680f-40ef-9e25-5788999092dc
+		summarizeBy: sum
+		sourceColumn: TA
+
+		annotation SummarizationSetBy = Automatic
+
+	column TR
+		dataType: int64
+		formatString: 0
+		lineageTag: 867d5c6c-fac8-4c01-a750-ff8d69a42911
+		summarizeBy: sum
+		sourceColumn: TR
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_players = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\luisa\OneDrive\Proyectos Power BI\premier_league_proyect\Datasets\dim_pl_players.xlsm"), null, true),
+				    dim_players_Table = Source{[Item="dim_players",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(dim_players_Table,{{"RL", Int64.Type}, {"Player", type text}, {"image URL", type text}, {"País", type text}, {"Position", type text}, {"Equipo", type text}, {"Edad", Int64.Type}, {"Nacimiento", Int64.Type}, {"PJ", Int64.Type}, {"Titular", Int64.Type}, {"Mín", type number}, {"90 s", Int64.Type}, {"Gls.", Int64.Type}, {"Ass", Int64.Type}, {"G+A", Int64.Type}, {"G-TP", Int64.Type}, {"TP", Int64.Type}, {"TPint", Int64.Type}, {"TA", Int64.Type}, {"TR", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
