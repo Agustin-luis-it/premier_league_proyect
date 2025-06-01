@@ -6,7 +6,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["dim_players"]
+annotation PBI_QueryOrder = ["dim_players","_measures"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -15,6 +15,7 @@ annotation PBIDesktopVersion = 2.143.1204.0 (25.05)+23c84aace645781dd62b8a26eb04
 annotation PBI_ProTooling = ["DevMode"]
 
 ref table dim_players
+ref table _measures
 
 ref cultureInfo es-ES
 
