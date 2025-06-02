@@ -1,0 +1,41 @@
+table dim_countries
+	lineageTag: 56d7e309-0d55-43ca-b2b9-8a179fbde2d9
+
+	column Country
+		dataType: string
+		lineageTag: dd18629b-76d7-4095-8639-d3896a208d15
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Abr
+		dataType: string
+		lineageTag: 2537d1bf-9d3c-40d5-bd8b-a662bb41a88c
+		summarizeBy: none
+		sourceColumn: Abr
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Image URL'
+		dataType: string
+		lineageTag: 936fb116-be00-437a-bbbf-2268992b752b
+		summarizeBy: none
+		sourceColumn: Image URL
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_countries = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\luisa\OneDrive\Proyectos Power BI\premier_league_proyect\Datasets\dim_pl_players.xlsm"), null, true),
+				    Table3_Table = Source{[Item="Table3",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Table3_Table,{{"Country", type text}, {"Abr", type text}, {"Image URL", type text}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

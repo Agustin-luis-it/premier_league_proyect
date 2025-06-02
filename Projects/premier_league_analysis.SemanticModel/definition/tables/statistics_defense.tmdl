@@ -1,0 +1,95 @@
+table statistics_defense
+	lineageTag: 6a5930ff-1d4d-4b17-be99-27911ee67128
+
+	column RL
+		dataType: int64
+		formatString: 0
+		lineageTag: f4e7a4ac-7b85-45d7-93a8-c197d1dbe57c
+		summarizeBy: none
+		sourceColumn: RL
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jugador
+		dataType: string
+		lineageTag: cddad24a-f771-407e-a64c-fd8cc0b49428
+		summarizeBy: none
+		sourceColumn: Jugador
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tackles attempted'
+		dataType: int64
+		formatString: 0
+		lineageTag: 448fed9d-0565-4f98-bdfd-15b10f558be5
+		summarizeBy: sum
+		sourceColumn: Tackles attempted
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tackles
+		dataType: int64
+		formatString: 0
+		lineageTag: 592fc2c8-1c4d-46f7-83bd-8d86715f7245
+		summarizeBy: sum
+		sourceColumn: Tackles
+
+		annotation SummarizationSetBy = Automatic
+
+	column Blocks
+		dataType: int64
+		formatString: 0
+		lineageTag: 233e188d-2fca-40e3-80c9-c216a549ac66
+		summarizeBy: sum
+		sourceColumn: Blocks
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shoots blocked'
+		dataType: int64
+		formatString: 0
+		lineageTag: 53bbfe32-34ec-4dab-81f0-e9efa8ac949d
+		summarizeBy: sum
+		sourceColumn: Shoots blocked
+
+		annotation SummarizationSetBy = Automatic
+
+	column Interceptions
+		dataType: int64
+		formatString: 0
+		lineageTag: 62783327-2a20-4243-b063-949d260a57f2
+		summarizeBy: sum
+		sourceColumn: Interceptions
+
+		annotation SummarizationSetBy = Automatic
+
+	column Clearense
+		dataType: int64
+		formatString: 0
+		lineageTag: c6d27e27-f2c8-4cdf-b2a7-88eb5ed4e360
+		summarizeBy: sum
+		sourceColumn: Clearense
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Errora lead to shoot'
+		dataType: int64
+		formatString: 0
+		lineageTag: 53d64d0f-37ad-4c94-b116-3451ca1b3888
+		summarizeBy: sum
+		sourceColumn: Errora lead to shoot
+
+		annotation SummarizationSetBy = Automatic
+
+	partition statistics_defense = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\luisa\OneDrive\Proyectos Power BI\premier_league_proyect\Datasets\dim_statistics.xlsx"), null, true),
+				    Defense_Table = Source{[Item="Defense",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Defense_Table,{{"RL", Int64.Type}, {"Jugador", type text}, {"Tackles attempted", Int64.Type}, {"Tackles", Int64.Type}, {"Blocks", Int64.Type}, {"Shoots blocked", Int64.Type}, {"Interceptions", Int64.Type}, {"Clearense", Int64.Type}, {"Errora lead to shoot", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Exception
+

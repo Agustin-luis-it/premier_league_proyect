@@ -1,0 +1,104 @@
+table statistics_goalkeeping
+	lineageTag: 40220141-07ac-4bcf-9e8a-f7742bf58b6f
+
+	column RL
+		dataType: int64
+		formatString: 0
+		lineageTag: 6457cde8-1fb5-4121-8b54-5ef46bf503d8
+		summarizeBy: none
+		sourceColumn: RL
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jugador
+		dataType: string
+		lineageTag: 8b541a27-2ca6-4e9e-b656-d338b94fdb38
+		summarizeBy: none
+		sourceColumn: Jugador
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Goals conceded'
+		dataType: int64
+		formatString: 0
+		lineageTag: c21597bb-667c-472e-80b0-fe4e2812b710
+		summarizeBy: none
+		sourceColumn: Goals conceded
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Penalties conceded'
+		dataType: int64
+		formatString: 0
+		lineageTag: 97862e28-e334-495a-a7b8-d6df5da002a4
+		summarizeBy: none
+		sourceColumn: Penalties conceded
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Corner goals'
+		dataType: int64
+		formatString: 0
+		lineageTag: f9e84420-49d2-4312-91d0-4a3645552d81
+		summarizeBy: none
+		sourceColumn: Corner goals
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Long Passes'
+		dataType: int64
+		formatString: 0
+		lineageTag: d2a7d609-1144-4006-8963-1d6efc703b48
+		summarizeBy: none
+		sourceColumn: Long Passes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Long Passes attempted'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5afd3418-5472-45d3-b161-2eeb0d7f10b8
+		summarizeBy: none
+		sourceColumn: Long Passes attempted
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shoots on target'
+		dataType: int64
+		formatString: 0
+		lineageTag: c4ffaefc-3a89-4c1f-b413-04b4517207c9
+		summarizeBy: none
+		sourceColumn: Shoots on target
+
+		annotation SummarizationSetBy = Automatic
+
+	column Saves
+		dataType: int64
+		formatString: 0
+		lineageTag: 211fa23b-75d6-49ea-b90b-d41c4ddc59f8
+		summarizeBy: none
+		sourceColumn: Saves
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Clean Sheet'
+		dataType: int64
+		formatString: 0
+		lineageTag: 386cbd48-0127-4a17-ba38-4a2d9dc959e0
+		summarizeBy: none
+		sourceColumn: Clean Sheet
+
+		annotation SummarizationSetBy = Automatic
+
+	partition statistics_goalkeeping = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\luisa\OneDrive\Proyectos Power BI\premier_league_proyect\Datasets\dim_statistics.xlsx"), null, true),
+				    Goalkeeper_Table = Source{[Item="Goalkeeper",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Goalkeeper_Table,{{"RL", Int64.Type}, {"Jugador", type text}, {"Goals conceded", Int64.Type}, {"Penalties conceded", Int64.Type}, {"Corner goals", Int64.Type}, {"Long Passes", Int64.Type}, {"Long Passes attempted", Int64.Type}, {"Shoots on target", Int64.Type}, {"Saves", Int64.Type}, {"Clean Sheet", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Exception
+

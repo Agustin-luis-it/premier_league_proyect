@@ -1,0 +1,122 @@
+table statistics_attack
+	lineageTag: 2bac579f-7c67-4c54-93ef-6c13706b9b39
+
+	column RL
+		dataType: int64
+		formatString: 0
+		lineageTag: 474f2012-4ee8-49fe-a9a5-05944d935bac
+		summarizeBy: none
+		sourceColumn: RL
+
+		annotation SummarizationSetBy = Automatic
+
+	column Player
+		dataType: string
+		lineageTag: 149a5341-4099-4634-9d74-973ff6c5d5f1
+		summarizeBy: none
+		sourceColumn: Player
+
+		annotation SummarizationSetBy = Automatic
+
+	column Goals
+		dataType: int64
+		formatString: 0
+		lineageTag: 86887abb-5430-4f94-9e1f-5b407dd4dcd5
+		summarizeBy: sum
+		sourceColumn: Goals
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shoots
+		dataType: int64
+		formatString: 0
+		lineageTag: a1601f77-27c9-477f-ac28-a666e625f978
+		summarizeBy: sum
+		sourceColumn: Shoots
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'On target'
+		dataType: int64
+		formatString: 0
+		lineageTag: f1984b68-7940-460a-a5a6-2dd50caea61c
+		summarizeBy: sum
+		sourceColumn: On target
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shoots per 90'''
+		dataType: int64
+		formatString: 0
+		lineageTag: bd340b2c-46fe-44e9-96b3-14f03e8c7e28
+		summarizeBy: sum
+		sourceColumn: Shoots per 90'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Free kick'
+		dataType: int64
+		formatString: 0
+		lineageTag: 804e69f0-7a9c-4a1b-8f2e-e8fcf3099346
+		summarizeBy: sum
+		sourceColumn: Free kick
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Scored penalties'
+		dataType: int64
+		formatString: 0
+		lineageTag: 47d1b9c0-bb0a-4f82-8a3b-6b05e7763dfd
+		summarizeBy: sum
+		sourceColumn: Scored penalties
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'penalties attempt'
+		dataType: int64
+		formatString: 0
+		lineageTag: e6741110-11c5-4e35-94ab-1fab68b26845
+		summarizeBy: sum
+		sourceColumn: penalties attempt
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Expected goals'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f8b6fc9-f9c5-4dfb-b153-c997a8f8c27e
+		summarizeBy: sum
+		sourceColumn: Expected goals
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shoot opportunities created'
+		dataType: int64
+		formatString: 0
+		lineageTag: 153cf39c-2c0c-4f08-8b3b-5f19d08f8226
+		summarizeBy: sum
+		sourceColumn: Shoot opportunities created
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Goals opportunities created'
+		dataType: int64
+		formatString: 0
+		lineageTag: 663e526b-9832-43c5-92b3-0ed2b9be8105
+		summarizeBy: sum
+		sourceColumn: Goals opportunities created
+
+		annotation SummarizationSetBy = Automatic
+
+	partition statistics_attack = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\luisa\OneDrive\Proyectos Power BI\premier_league_proyect\Datasets\dim_statistics.xlsx"), null, true),
+				    Attack_Table = Source{[Item="Attack",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Attack_Table,{{"RL", Int64.Type}, {"Player", type text}, {"Goals", Int64.Type}, {"Shoots", Int64.Type}, {"On target", Int64.Type}, {"Shoots per 90'", Int64.Type}, {"Free kick", Int64.Type}, {"Scored penalties", Int64.Type}, {"penalties attempt", Int64.Type}, {"Expected goals", Int64.Type}, {"Shoot opportunities created", Int64.Type}, {"Goals opportunities created", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Exception
+

@@ -6,7 +6,7 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation PBI_QueryOrder = ["dim_players","_measures"]
+annotation PBI_QueryOrder = ["dim_players","_measures","statistics_attack","statistics_defense","statistics_goalkeeping","statistics_passing","dim_teams","dim_countries"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -16,6 +16,13 @@ annotation PBI_ProTooling = ["DevMode"]
 
 ref table dim_players
 ref table _measures
+ref table statistics_attack
+ref table statistics_defense
+ref table statistics_goalkeeping
+ref table statistics_passing
+ref table dim_teams
+ref table dim_countries
+ref table _field_parameters
 
 ref cultureInfo es-ES
 

@@ -1,0 +1,239 @@
+table statistics_passing
+	lineageTag: b6d8e9fe-0af4-4e73-922b-5dd768b6cf72
+
+	column RL
+		dataType: int64
+		formatString: 0
+		lineageTag: aac47fa8-2f27-484f-ae6d-9152c02d85ce
+		summarizeBy: none
+		sourceColumn: RL
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jugador
+		dataType: string
+		lineageTag: 441c3cc1-2c74-4b60-b870-0776a4d88adc
+		summarizeBy: none
+		sourceColumn: Jugador
+
+		annotation SummarizationSetBy = Automatic
+
+	column Passes
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e0d9261-4ea3-4774-9a0c-3649ff333e2c
+		summarizeBy: sum
+		sourceColumn: Passes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Passes attempted'
+		dataType: int64
+		formatString: 0
+		lineageTag: 489be1b1-0706-46a2-a8d9-3a3e0de3c0c9
+		summarizeBy: sum
+		sourceColumn: Passes attempted
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Short passes'
+		dataType: int64
+		formatString: 0
+		lineageTag: ca82b143-b4ce-44a8-a8ab-c1d9a0273c32
+		summarizeBy: sum
+		sourceColumn: Short passes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Short attempted'
+		dataType: int64
+		formatString: 0
+		lineageTag: 1e4950d4-1527-4325-8109-883203e4d347
+		summarizeBy: sum
+		sourceColumn: Short attempted
+
+		annotation SummarizationSetBy = Automatic
+
+	column Medium
+		dataType: int64
+		formatString: 0
+		lineageTag: 1722b434-52e4-4e65-861e-c62bb4103e63
+		summarizeBy: sum
+		sourceColumn: Medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Medium attemped'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f30241d-2fce-4875-b40c-8010df6937ae
+		summarizeBy: sum
+		sourceColumn: Medium attemped
+
+		annotation SummarizationSetBy = Automatic
+
+	column Long
+		dataType: int64
+		formatString: 0
+		lineageTag: 4bc32576-7caa-4fe0-83bd-e9089fdd477f
+		summarizeBy: sum
+		sourceColumn: Long
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Long attempted'
+		dataType: int64
+		formatString: 0
+		lineageTag: e7701961-948a-4d37-8a72-cb60d0997cfb
+		summarizeBy: sum
+		sourceColumn: Long attempted
+
+		annotation SummarizationSetBy = Automatic
+
+	column Assists
+		dataType: int64
+		formatString: 0
+		lineageTag: 999ed88a-ff50-48cc-b355-9e57eb9486d4
+		summarizeBy: sum
+		sourceColumn: Assists
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Expected assists'
+		dataType: int64
+		formatString: 0
+		lineageTag: 063cd4f6-a25b-4e3b-a862-5096a2a38ccb
+		summarizeBy: sum
+		sourceColumn: Expected assists
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Key passes'
+		dataType: int64
+		formatString: 0
+		lineageTag: 15a6438a-ae48-4a5d-9761-dbca3a1dbe88
+		summarizeBy: sum
+		sourceColumn: Key passes
+
+		annotation SummarizationSetBy = Automatic
+
+	column '2/3 passes'
+		dataType: int64
+		formatString: 0
+		lineageTag: 203fa497-6e18-47f6-9c7a-af4b3c2f426c
+		summarizeBy: sum
+		sourceColumn: 2/3 passes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Passes forward'
+		dataType: int64
+		formatString: 0
+		lineageTag: 20bbe69c-0d09-4aeb-b2d0-91066b851664
+		summarizeBy: sum
+		sourceColumn: Passes forward
+
+		annotation SummarizationSetBy = Automatic
+
+	column Touches
+		dataType: int64
+		formatString: 0
+		lineageTag: f7f40955-a2af-4fb2-aad3-c747520ba7e6
+		summarizeBy: sum
+		sourceColumn: Touches
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Touches 1/3'
+		dataType: int64
+		formatString: 0
+		lineageTag: e161c98d-0f8c-4e8c-9384-a42657d16466
+		summarizeBy: sum
+		sourceColumn: Touches 1/3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Touches 2/3'
+		dataType: int64
+		formatString: 0
+		lineageTag: 29a52e96-c992-4765-82dc-d90ee23e3a2f
+		summarizeBy: sum
+		sourceColumn: Touches 2/3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Touches 3/3'
+		dataType: int64
+		formatString: 0
+		lineageTag: b67ba865-1bff-49a8-a05f-30fe0083538d
+		summarizeBy: sum
+		sourceColumn: Touches 3/3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Touches opponent area'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8924143d-41c0-41d6-9e52-fd594282d789
+		summarizeBy: sum
+		sourceColumn: Touches opponent area
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Errores de control'
+		dataType: int64
+		formatString: 0
+		lineageTag: 08dfbc02-373c-4685-9642-9e526b9c04f5
+		summarizeBy: sum
+		sourceColumn: Errores de control
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Possesion lost'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ff06200-a4fe-4719-9e5c-76064c3f06ed
+		summarizeBy: sum
+		sourceColumn: Possesion lost
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Received passes'
+		dataType: int64
+		formatString: 0
+		lineageTag: d334022e-df6e-47d0-b164-4c58333de9c8
+		summarizeBy: sum
+		sourceColumn: Received passes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dribbles attempt'
+		dataType: int64
+		formatString: 0
+		lineageTag: ee26d92a-fc56-4fb5-b9c7-fe9680831e7f
+		summarizeBy: sum
+		sourceColumn: Dribbles attempt
+
+		annotation SummarizationSetBy = Automatic
+
+	column Dibbles
+		dataType: int64
+		formatString: 0
+		lineageTag: 2aa61f77-368c-4ab9-b815-4a22364a5162
+		summarizeBy: sum
+		sourceColumn: Dibbles
+
+		annotation SummarizationSetBy = Automatic
+
+	partition statistics_passing = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\luisa\OneDrive\Proyectos Power BI\premier_league_proyect\Datasets\dim_statistics.xlsx"), null, true),
+				    Passing_Table = Source{[Item="Passing",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Passing_Table,{{"RL", Int64.Type}, {"Jugador", type text}, {"Passes", Int64.Type}, {"Passes attempted", Int64.Type}, {"Short passes", Int64.Type}, {"Short attempted", Int64.Type}, {"Medium", Int64.Type}, {"Medium attemped", Int64.Type}, {"Long", Int64.Type}, {"Long attempted", Int64.Type}, {"Assists", Int64.Type}, {"Expected assists", Int64.Type}, {"Key passes", Int64.Type}, {"2/3 passes", Int64.Type}, {"Passes forward", Int64.Type}, {"Touches", Int64.Type}, {"Touches 1/3", Int64.Type}, {"Touches 2/3", Int64.Type}, {"Touches 3/3", Int64.Type}, {"Touches opponent area", Int64.Type}, {"Errores de control", Int64.Type}, {"Possesion lost", Int64.Type}, {"Received passes", Int64.Type}, {"Dribbles attempt", Int64.Type}, {"Dibbles", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

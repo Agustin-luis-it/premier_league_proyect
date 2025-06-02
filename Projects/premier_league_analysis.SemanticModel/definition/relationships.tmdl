@@ -1,0 +1,30 @@
+relationship 7270d89a-a626-73e7-1747-542413ba9ad6
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: dim_players.RL
+	toColumn: statistics_attack.RL
+
+relationship d29a0684-26f2-6d63-27c1-bd3e01f42a6c
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: dim_players.RL
+	toColumn: statistics_defense.RL
+
+relationship 19209404-6527-8246-ad9f-48f4c04c90f4
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: statistics_passing.RL
+	toColumn: dim_players.RL
+
+relationship 8eb71664-da68-dd76-4227-d33f59f5a171
+	fromColumn: dim_players.País
+	toColumn: dim_countries.Country
+
+relationship af0a9dae-e533-570f-26bc-2ee55e31abaa
+	fromColumn: dim_players.Equipo
+	toColumn: dim_teams.Team
+
+relationship e69efcac-4066-3098-5811-85d7b0b54222
+	fromColumn: dim_players.Player
+	toColumn: statistics_goalkeeping.Jugador
+

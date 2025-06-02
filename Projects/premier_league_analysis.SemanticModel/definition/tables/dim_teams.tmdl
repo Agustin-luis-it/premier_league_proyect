@@ -1,0 +1,34 @@
+table dim_teams
+	lineageTag: 35c89d52-f427-4fcc-8339-f848f07afc59
+
+	column Team
+		dataType: string
+		lineageTag: 809a7615-eaf3-4f20-a552-777ca51cb430
+		summarizeBy: none
+		sourceColumn: Team
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'image url'
+		dataType: string
+		lineageTag: ee396fc6-d513-4bbe-8030-c7c2a0b6cbc6
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: image url
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_teams = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\luisa\OneDrive\Proyectos Power BI\premier_league_proyect\Datasets\dim_pl_players.xlsm"), null, true),
+				    Table2_Table = Source{[Item="Table2",Kind="Table"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Table2_Table,{{"Team", type text}, {"image url", type text}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Exception
+
