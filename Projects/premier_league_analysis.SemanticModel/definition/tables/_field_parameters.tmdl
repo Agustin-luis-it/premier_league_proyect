@@ -1,6 +1,9 @@
 table _field_parameters
 	lineageTag: 178448f3-17e0-4bfa-93aa-1ca9375348f0
 
+	measure Measure
+		lineageTag: 5c047b83-7f17-450e-8816-cf4ab347cae1
+
 	column Parameters
 		lineageTag: 8bdd0005-2ed6-4bfc-aa92-fc2904c51a94
 		summarizeBy: none
@@ -56,10 +59,7 @@ table _field_parameters
 				    ("Blocks", NAMEOF('statistics_defense'[Blocks]), 6, "Defense"),
 				    ("Clearense", NAMEOF('statistics_defense'[Clearense]), 7, "Defense"),
 				    ("Interceptions", NAMEOF('statistics_defense'[Interceptions]), 8, "Defense"),
-				    ("Tackles", NAMEOF('statistics_defense'[Tackles]), 9, "Defense"),
-				    ("Clean Sheet", NAMEOF('statistics_goalkeeping'[Clean Sheet]), 10, "Goalkeeper"),
-				    ("Saves", NAMEOF('statistics_goalkeeping'[Saves]), 11, "Goalkeeper"),
-				    ("Goals conceded", NAMEOF('statistics_goalkeeping'[Goals conceded]), 12, "Goalkeeper")
+				    ("Tackles", NAMEOF('statistics_defense'[Tackles]), 9, "Defense")
 				}
 
 	annotation PBI_Id = 6b85699d6d8542e7a8db467ad481bde2

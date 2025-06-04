@@ -1,0 +1,10 @@
+DEFINE
+    MEASURE '_measures'[_card_4_player] = 
+		VAR _result = CALCULATE(MAX([card_1_metric_selected]),
+		[card_1_metric_selected] = MAX([card_1_metric_selected]))
+	      
+		RETURN	
+		_result
+
+
+EVALUATE
