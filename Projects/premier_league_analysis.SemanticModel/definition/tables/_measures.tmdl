@@ -150,6 +150,176 @@ table _measures
 		displayFolder: _visuals
 		lineageTag: 7820b16e-8757-4ef3-8d7c-d93cbaad2299
 
+	measure card_term_3_metric_selected =
+			
+			VAR _selected = SELECTEDVALUE(_field_parameters[Parameter Group])
+			RETURN
+			    SWITCH(
+			        _selected,
+			        "Attack", SUM(statistics_attack[On target]),
+			        "Defense", SUM(statistics_defense[Clearense]),
+			        "Passing", SUM(statistics_passing[Key passes]),
+			        0
+			    )
+		formatString: 0
+		displayFolder: _visuals
+		lineageTag: 2818d1c1-8dc7-415f-b415-da9599ed6f15
+
+	measure _team_rank_term_1 = ```
+			
+			VAR _selected = SELECTEDVALUE(_field_parameters[Parameter Group])
+			VAR _rank =
+			    SWITCH(
+			        _selected,
+			        "Attack", 
+			            RANKX(
+			                ALL(dim_teams[Team]),
+			                CALCULATE(SUM(statistics_attack[Goals])),
+			                ,
+			                DESC
+			            ),
+			        "Defense", 
+			            RANKX(
+			                ALL(dim_teams[Team]),
+			                CALCULATE(SUM(statistics_defense[Tackles])),
+			                ,
+			                DESC
+			            ),
+			        "Passing", 
+			            RANKX(
+			                ALL(dim_teams[Team]),
+			                CALCULATE(SUM(statistics_passing[Passes])),
+			                ,
+			                DESC
+			            ),
+			        "Goalkeeper", 
+			            RANKX(
+			                ALL(dim_teams[Team]),
+			                CALCULATE(SUM(statistics_goalkeeping[Saves])),
+			                ,
+			                DESC
+			            ),
+			        BLANK()
+			    )
+			RETURN 
+			"#" & _rank & " in the league"
+			
+			```
+		displayFolder: _visuals
+		lineageTag: 271d1bc6-59b0-494c-a3c2-34bae50e06d9
+
+	measure _team_rank_term_2 = ```
+			
+			VAR _selected = SELECTEDVALUE(_field_parameters[Parameter Group])
+			VAR _rank =
+			    SWITCH(
+			        _selected,
+			        "Attack", 
+			            RANKX(
+			                ALL(dim_teams[Team]),
+			                CALCULATE(SUM(statistics_attack[Goals opportunities created])),
+			                ,
+			                DESC
+			            ),
+			        "Defense", 
+			            RANKX(
+			                ALL(dim_teams[Team]),
+			                CALCULATE(SUM(statistics_defense[Interceptions])),
+			                ,
+			                DESC
+			            ),
+			        "Passing", 
+			            RANKX(
+			                ALL(dim_teams[Team]),
+			                CALCULATE(SUM(statistics_passing[Assists])),
+			                ,
+			                DESC
+			            )
+			    )
+			RETURN 
+			"#" & _rank & " in the league"
+			```
+		displayFolder: _visuals
+		lineageTag: d05c8890-0728-4e10-9b46-8d9a43ccc6f6
+
+	measure _team_rank_term_3 = ```
+			
+			VAR _selected = SELECTEDVALUE(_field_parameters[Parameter Group])
+			VAR _rank =
+			    SWITCH(
+			        _selected,
+			        "Attack", 
+			            RANKX(
+			                ALL(dim_teams[Team]),
+			                CALCULATE(SUM(statistics_attack[On target])),
+			                ,
+			                DESC
+			            ),
+			        "Defense", 
+			            RANKX(
+			                ALL(dim_teams[Team]),
+			                CALCULATE(SUM(statistics_defense[Clearense])),
+			                ,
+			                DESC
+			            ),
+			        "Passing", 
+			            RANKX(
+			                ALL(dim_teams[Team]),
+			                CALCULATE(SUM(statistics_passing[Key passes])),
+			                ,
+			                DESC
+			            )
+			    )
+			RETURN 
+			"#" & _rank & " in the league"
+			```
+		displayFolder: _visuals
+		lineageTag: 5b210599-aa12-4df9-850c-109b35659b37
+
+	measure _title_card_term_1 = ```
+			
+			VAR _selected = SELECTEDVALUE(_field_parameters[Parameter Group])
+			
+			RETURN
+			    SWITCH(
+			        _selected,
+			        "Attack", "Goals",
+			        "Defense", "Tackles",
+			        "Passing", "Passes"
+			    )
+			
+			```
+		displayFolder: _visuals
+		lineageTag: 63df5699-835e-41dc-ad23-f97e166f7d05
+
+	measure _title_card_term_2 =
+			
+			VAR _selected = SELECTEDVALUE(_field_parameters[Parameter Group])
+			
+			RETURN
+			    SWITCH(
+			        _selected,
+			        "Attack", "Goal opportunities created",
+			        "Defense", "Interceptions",
+			        "Passing", "Assists"
+			    )
+		displayFolder: _visuals
+		lineageTag: 49f508af-35c2-43b7-b882-866e2976af7f
+
+	measure _title_card_term_3 =
+			
+			VAR _selected = SELECTEDVALUE(_field_parameters[Parameter Group])
+			
+			RETURN
+			    SWITCH(
+			        _selected,
+			        "Attack", "Shoots on target",
+			        "Defense", "Clearenses",
+			        "Passing", "Key passes"
+			    )
+		displayFolder: _visuals
+		lineageTag: 3990a58f-1072-443c-971e-966cb0665444
+
 	column metrics
 		dataType: string
 		lineageTag: ea5342d3-216f-46a3-a684-6374b0eac9e0
