@@ -1,9 +1,6 @@
 table _field_parameters
 	lineageTag: 178448f3-17e0-4bfa-93aa-1ca9375348f0
 
-	measure Measure
-		lineageTag: 5c047b83-7f17-450e-8816-cf4ab347cae1
-
 	column Parameters
 		lineageTag: 8bdd0005-2ed6-4bfc-aa92-fc2904c51a94
 		summarizeBy: none

@@ -1,10 +1,6 @@
 table dim_players
 	lineageTag: bfbf75c0-5c66-4f73-9fba-bd286799b10d
 
-	measure _selected_image_url = SELECTEDVALUE(dim_players[image URL])
-		lineageTag: de2a3cfd-4d91-4398-821c-8c8d90a8b0a2
-		dataCategory: ImageUrl
-
 	column RL
 		dataType: int64
 		formatString: 0

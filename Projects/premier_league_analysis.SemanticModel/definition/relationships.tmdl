@@ -17,10 +17,12 @@ relationship 19209404-6527-8246-ad9f-48f4c04c90f4
 	toColumn: dim_players.RL
 
 relationship 8eb71664-da68-dd76-4227-d33f59f5a171
+	crossFilteringBehavior: bothDirections
 	fromColumn: dim_players.País
 	toColumn: dim_countries.Country
 
 relationship af0a9dae-e533-570f-26bc-2ee55e31abaa
+	crossFilteringBehavior: bothDirections
 	fromColumn: dim_players.Equipo
 	toColumn: dim_teams.Team
 

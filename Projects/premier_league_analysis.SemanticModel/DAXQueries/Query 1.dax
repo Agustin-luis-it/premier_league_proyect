@@ -1,0 +1,9 @@
+
+EVALUATE
+SUMMARIZECOLUMNS(
+    dim_teams[Team],
+    "Total Goals", SUM(statistics_attack[Goals]),
+	"Avr", ROUND(SUM(statistics_attack[Goals]) - (CALCULATE(SUM(statistics_attack[Goals]),ALL(dim_teams[Team]))/20),0)
+)
+
+	

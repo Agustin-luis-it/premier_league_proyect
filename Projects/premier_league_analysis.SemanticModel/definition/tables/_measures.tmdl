@@ -7,14 +7,15 @@ table _measures
 			RETURN
 			    SWITCH(
 			        TRUE(),
-			        seleccion = "Attack", "#E74C3C",       // Rojo suave (Tomato Red)
-			        seleccion = "Defense", "#5DADE2",      // Celeste (Sky Blue)
-			        seleccion = "Passing", "#27AE60",
-			        seleccion = "Goalkeeper", "#27AE60",         // Verde amigable (Emerald)
-			        "#D5D8DC"                              // Gris claro por defecto
+			        seleccion = "Attack", "#C0392B",       // Rojo más oscuro
+			        seleccion = "Defense", "#2980B9",      // Celeste más oscuro
+			        seleccion = "Passing", "#1E8449",      // Verde más oscuro
+			        "#D5D8DC"
 			    )
 			
+			
 			```
+		displayFolder: _page_design
 		lineageTag: e25b4956-fa3a-4c2b-a95a-33c29d55c192
 		dataCategory: ImageUrl
 
@@ -53,24 +54,25 @@ table _measures
 			
 			SWITCH(
 			    SELECTEDVALUE(dim_players[Equipo]),
-			    "Arsenal", "#EF0107",            -- Rojo Arsenal
+			    "Arsenal", "#C8102E",            -- Rojo Arsenal
 			    "Aston Villa", "#670E36",        -- Bordó oscuro
 			    "Bournemouth", "#DA291C",        -- Rojo intenso
-			    "Brentford", "#E30613",          -- Rojo
+			    "Brentford", "#C8102E",          -- Rojo
 			    "Brighton", "#0057B8",           -- Azul Brighton
 			    "Burnley", "#6C1D45",            -- Bordó clásico
 			    "Chelsea", "#034694",            -- Azul Chelsea
 			    "Crystal Palace", "#1B458F",     -- Azul fuerte
 			    "Everton", "#003399",            -- Azul Everton
 			    "Fulham", "#000000",             -- Negro
+			    "Leicester City", "#0057B8",     -- Azul Leicester   
 			    "Liverpool", "#C8102E",          -- Rojo Liverpool
 			    "Ipswich Town", "#EE2737",         -- Rojo claro
 			    "Manchester City", "#6CABDD",    -- Celeste City
-			    "Manchester United", "#DA291C",  -- Rojo United
-			    "Newcastle United", "#241F20",   -- Negro Newcastle
-			    "Nottingham Forest", "#E53233",  -- Rojo
+			    "Manchester Utd", "#DA291C",  -- Rojo United
+			    "Newcastle Utd", "#1C1C1C",   -- Negro Newcastle
+			    "Nott'ham Forest", "#E53233",  -- Rojo
 			    "Southampton", "#EE2737",   -- Rojo claro
-			    "Tottenham Hotspur", "#132257",  -- Azul oscuro
+			    "Tottenham", "#132257",  -- Azul oscuro
 			    "West Ham", "#7A263A",    -- Bordó clásico
 			    "Wolves", "#FDB913", -- Amarillo Wolves
 			    "#BFBFBF"                         -- Color por defecto (gris claro)
@@ -79,61 +81,6 @@ table _measures
 			```
 		displayFolder: _page_design
 		lineageTag: b6c793fe-cf98-4457-9d6b-879c9d93160f
-
-	measure _selected_player_image =
-			
-			SELECTEDVALUE(dim_players[image URL])
-		lineageTag: 9b585a04-967c-4f39-987e-d29d4e4771c4
-
-	measure card_1_top_player = ```
-			
-			VAR _selected = SELECTEDVALUE(_field_parameters[Parameter Group])
-			VAR _playerAttack = 
-			    CALCULATE(
-			        MAX(dim_players[Player]),
-			        TOPN(1, statistics_attack, statistics_attack[Goals], DESC)
-			    )
-			VAR _playerDefense = 
-			    CALCULATE(
-			        MAX(dim_players[Player]),
-			        TOPN(1, statistics_defense, statistics_defense[Tackles], DESC)
-			    )
-			VAR _playerPassing = 
-			    CALCULATE(
-			        MAX(dim_players[Player]),
-			        TOPN(1, statistics_passing, statistics_passing[Passes], DESC)
-			    )
-			VAR _playerGoalkeeper = 
-			    CALCULATE(
-			        MAX(dim_players[Player]),
-			        TOPN(1, statistics_goalkeeping, statistics_goalkeeping[Saves], DESC)
-			    )
-			RETURN
-			    SWITCH(
-			        _selected,
-			        "Attack", _playerAttack,
-			        "Defense", _playerDefense,
-			        "Passing", _playerPassing,
-			        "Goalkeeper", _playerGoalkeeper,
-			        "N/A"
-			    )
-			
-			```
-		lineageTag: eb39ee50-9ed1-44f5-a332-14a7cfa43f83
-
-	measure title_card_5_metric_selected =
-			
-			VAR _selected = SELECTEDVALUE(_field_parameters[Parameter Group])
-			RETURN
-			    SWITCH(
-			        _selected,
-			        "Attack", "Goals",
-			        "Defense", "Tackles",
-			        "Passing", "Assists",
-			        "Goalkeeper", "Saves",
-			        "None"
-			    )
-		lineageTag: 8de94784-579f-4e2e-8bc7-c6c2fdd74c22
 
 	measure card_term_2_metric_selected =
 			
@@ -319,6 +266,137 @@ table _measures
 			    )
 		displayFolder: _visuals
 		lineageTag: 3990a58f-1072-443c-971e-966cb0665444
+
+	measure _team_vs_avg_term_1 = ```
+			
+			VAR _selected = SELECTEDVALUE(_field_parameters[Parameter Group])
+			
+			VAR _teamValue =
+			    SWITCH(
+			        _selected,
+			        "Attack", SUM(statistics_attack[Goals]),
+			        "Defense", SUM(statistics_defense[Tackles]),
+			        "Passing", SUM(statistics_passing[Passes]),
+			        "Goalkeeper", SUM(statistics_goalkeeping[Saves])
+			    )
+			
+			VAR _avgValue =
+			    SWITCH(
+			        _selected,
+			        "Attack", CALCULATE(SUM(statistics_attack[Goals]),ALL(dim_teams[Team]))/20,
+			        "Defense", CALCULATE(SUM(statistics_defense[Tackles]),ALL(dim_teams[Team]))/20,
+			        "Passing", CALCULATE(SUM(statistics_passing[Passes]),ALL(dim_teams[Team]))/20,
+			        "Goalkeeper", CALCULATE(SUM(statistics_goalkeeping[Saves]),ALL(dim_teams[Team]))/20
+			    )
+			
+			VAR _diff = ROUND(_teamValue - _avgValue, 0)
+			
+			RETURN
+			_diff
+			
+			```
+		displayFolder: _visuals
+		lineageTag: d88fc739-e958-4e08-b245-095680f246c9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure _team_vs_avr_term_1_text = ```
+			
+			    SWITCH(
+			        TRUE(),
+			        [_team_vs_avg_term_1] > 0, "+" & [_team_vs_avg_term_1] & " more than the AVR",
+			        [_team_vs_avg_term_1] < 0, [_team_vs_avg_term_1] & " less than the AVR",
+			        "Same as AVR"
+			    )
+			```
+		displayFolder: _visuals
+		lineageTag: a8f9c2e2-9631-45cf-874e-0ec17f63484e
+
+	measure _team_vs_avg_term_2 =
+			
+			VAR _selected = SELECTEDVALUE(_field_parameters[Parameter Group])
+			
+			VAR _teamValue =
+			    SWITCH(
+			        _selected,
+			        "Attack", SUM(statistics_attack[Goals opportunities created]),
+			        "Defense", SUM(statistics_defense[Interceptions]),
+			        "Passing", SUM(statistics_passing[Assists]),
+			        "Goalkeeper", SUM(statistics_goalkeeping[Saves])
+			    )
+			
+			VAR _avgValue =
+			    SWITCH(
+			        _selected,
+			        "Attack", CALCULATE(SUM(statistics_attack[Goals opportunities created]),ALL(dim_teams[Team]))/20,
+			        "Defense", CALCULATE(SUM(statistics_defense[Interceptions]),ALL(dim_teams[Team]))/20,
+			        "Passing", CALCULATE(SUM(statistics_passing[Assists]),ALL(dim_teams[Team]))/20,
+			        "Goalkeeper", CALCULATE(SUM(statistics_goalkeeping[Saves]),ALL(dim_teams[Team]))/20
+			    )
+			
+			VAR _diff = ROUND(_teamValue - _avgValue, 0)
+			
+			RETURN
+			_diff
+		displayFolder: _visuals
+		lineageTag: 2a61c2f4-7e9a-4ae2-8053-76382cdbed86
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure _team_vs_avr_term_2_text = ```
+			
+			    SWITCH(
+			        TRUE(),
+			        [_team_vs_avg_term_2] > 0, "+" & [_team_vs_avg_term_2] & " more than the AVR",
+			        [_team_vs_avg_term_2] < 0, [_team_vs_avg_term_2] & " less than the AVR",
+			        "Same as AVR"
+			    )
+			```
+		displayFolder: _visuals
+		lineageTag: f49b6b8d-d2a4-416f-adfe-ec9d6c1b4c2f
+
+	measure _team_vs_avg_term_3 =
+			
+			VAR _selected = SELECTEDVALUE(_field_parameters[Parameter Group])
+			
+			VAR _teamValue =
+			    SWITCH(
+			        _selected,
+			        "Attack", SUM(statistics_attack[On target]),
+			        "Defense", SUM(statistics_defense[Clearense]),
+			        "Passing", SUM(statistics_passing[Key passes]),
+			        "Goalkeeper", SUM(statistics_goalkeeping[Saves])
+			    )
+			
+			VAR _avgValue =
+			    SWITCH(
+			        _selected,
+			        "Attack", CALCULATE(SUM(statistics_attack[On target]),ALL(dim_teams[Team]))/20,
+			        "Defense", CALCULATE(SUM(statistics_defense[Clearense]),ALL(dim_teams[Team]))/20,
+			        "Passing", CALCULATE(SUM(statistics_passing[Key passes]),ALL(dim_teams[Team]))/20,
+			        "Goalkeeper", CALCULATE(SUM(statistics_goalkeeping[Saves]),ALL(dim_teams[Team]))/20
+			    )
+			
+			VAR _diff = ROUND(_teamValue - _avgValue, 0)
+			
+			RETURN
+			_diff
+		displayFolder: _visuals
+		lineageTag: 1e1c59d5-cf20-449f-b77e-1b33d8721eae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure _team_vs_avr_term_3_text = ```
+			
+			    SWITCH(
+			        TRUE(),
+			        [_team_vs_avg_term_3] > 0, "+" & [_team_vs_avg_term_3] & " more than the AVR",
+			        [_team_vs_avg_term_3] < 0, [_team_vs_avg_term_3] & " less than the AVR",
+			        "Same as AVR"
+			    )
+			```
+		displayFolder: _visuals
+		lineageTag: 99cb8336-3d9a-44cf-81c7-7b4c979bda30
 
 	column metrics
 		dataType: string
