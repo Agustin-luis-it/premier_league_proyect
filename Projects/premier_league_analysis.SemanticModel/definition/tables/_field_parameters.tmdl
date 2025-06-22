@@ -50,13 +50,20 @@ table _field_parameters
 				    ("Goals", NAMEOF('statistics_attack'[Goals]),0, "Attack"),
 				    ("Shoots", NAMEOF('statistics_attack'[Shoots]), 1, "Attack"),
 				    ("On target", NAMEOF('statistics_attack'[On target]), 2, "Attack"),
+				    ("G + A", NAMEOF([G + A]), 3, "Attack"),
 				    ("Assists", NAMEOF('statistics_passing'[Assists]), 3, "Passing"),
 				    ("Key passes", NAMEOF('statistics_passing'[Key passes]), 4, "Passing"),
 				    ("Passes", NAMEOF('statistics_passing'[Passes]), 5, "Passing"),
+				    ("Dribbles", NAMEOF('statistics_passing'[Dibbles]), 5, "Passing"),
+				    ("Dribbles attempt", NAMEOF('statistics_passing'[Dribbles attempt]), 5, "Passing"),
+				    ("Dribbles %", NAMEOF([Dribble %]), 7, "Passing"),
 				    ("Blocks", NAMEOF('statistics_defense'[Blocks]), 6, "Defense"),
-				    ("Clearense", NAMEOF('statistics_defense'[Clearense]), 7, "Defense"),
+				    ("Clearenses", NAMEOF('statistics_defense'[Clearense]), 7, "Defense"),
 				    ("Interceptions", NAMEOF('statistics_defense'[Interceptions]), 8, "Defense"),
-				    ("Tackles", NAMEOF('statistics_defense'[Tackles]), 9, "Defense")
+				    ("Tackles", NAMEOF('statistics_defense'[Tackles]), 9, "Defense"),
+				    ("Tackles attempted", NAMEOF('statistics_defense'[Tackles attempted]), 10, "Defense"),
+				    ("Tackle %", NAMEOF([Tackle %]), 11, "Defense"),
+				    ("Rojas", NAMEOF(dim_players[TR]), 11, "Defense")
 				}
 
 	annotation PBI_Id = 6b85699d6d8542e7a8db467ad481bde2

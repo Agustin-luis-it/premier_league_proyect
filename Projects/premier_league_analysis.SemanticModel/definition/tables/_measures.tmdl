@@ -47,7 +47,7 @@ table _measures
 			
 			```
 		formatString: 0
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: d39bd00d-0a95-4959-822a-72ed02b7fc8d
 
 	measure _page_color_team = ```
@@ -94,7 +94,7 @@ table _measures
 			        0
 			    )
 		formatString: 0
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: 7820b16e-8757-4ef3-8d7c-d93cbaad2299
 
 	measure card_term_3_metric_selected =
@@ -109,7 +109,7 @@ table _measures
 			        0
 			    )
 		formatString: 0
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: 2818d1c1-8dc7-415f-b415-da9599ed6f15
 
 	measure _team_rank_term_1 = ```
@@ -152,7 +152,7 @@ table _measures
 			"#" & _rank & " in the league"
 			
 			```
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: 271d1bc6-59b0-494c-a3c2-34bae50e06d9
 
 	measure _team_rank_term_2 = ```
@@ -186,7 +186,7 @@ table _measures
 			RETURN 
 			"#" & _rank & " in the league"
 			```
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: d05c8890-0728-4e10-9b46-8d9a43ccc6f6
 
 	measure _team_rank_term_3 = ```
@@ -220,7 +220,7 @@ table _measures
 			RETURN 
 			"#" & _rank & " in the league"
 			```
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: 5b210599-aa12-4df9-850c-109b35659b37
 
 	measure _title_card_term_1 = ```
@@ -236,7 +236,7 @@ table _measures
 			    )
 			
 			```
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: 63df5699-835e-41dc-ad23-f97e166f7d05
 
 	measure _title_card_term_2 =
@@ -250,7 +250,7 @@ table _measures
 			        "Defense", "Interceptions",
 			        "Passing", "Assists"
 			    )
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: 49f508af-35c2-43b7-b882-866e2976af7f
 
 	measure _title_card_term_3 =
@@ -264,7 +264,7 @@ table _measures
 			        "Defense", "Clearenses",
 			        "Passing", "Key passes"
 			    )
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: 3990a58f-1072-443c-971e-966cb0665444
 
 	measure _team_vs_avg_term_1 = ```
@@ -295,7 +295,7 @@ table _measures
 			_diff
 			
 			```
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: d88fc739-e958-4e08-b245-095680f246c9
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -309,7 +309,7 @@ table _measures
 			        "Same as AVR"
 			    )
 			```
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: a8f9c2e2-9631-45cf-874e-0ec17f63484e
 
 	measure _team_vs_avg_term_2 =
@@ -338,7 +338,7 @@ table _measures
 			
 			RETURN
 			_diff
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: 2a61c2f4-7e9a-4ae2-8053-76382cdbed86
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -352,7 +352,7 @@ table _measures
 			        "Same as AVR"
 			    )
 			```
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: f49b6b8d-d2a4-416f-adfe-ec9d6c1b4c2f
 
 	measure _team_vs_avg_term_3 =
@@ -381,7 +381,7 @@ table _measures
 			
 			RETURN
 			_diff
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: 1e1c59d5-cf20-449f-b77e-1b33d8721eae
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -395,8 +395,52 @@ table _measures
 			        "Same as AVR"
 			    )
 			```
-		displayFolder: _visuals
+		displayFolder: _visuals_team_analysis
 		lineageTag: 99cb8336-3d9a-44cf-81c7-7b4c979bda30
+
+	measure _color_player_position =
+			
+			VAR seleccion = SELECTEDVALUE(dim_players[Position])
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        seleccion = "Forward", "#C0392B",       // Rojo más oscuro
+			        seleccion = "Defender", "#2980B9",      // Celeste más oscuro
+			        seleccion = "Midfielder", "#1E8449",    // Verde más oscuro
+			        seleccion = "Goalkeeper", "#F1C40F",   // Amarillo
+			        "#D5D8DC"
+			    )
+		displayFolder: _page_design
+		lineageTag: 4d42276b-6d5c-4d57-ab66-967cb65bd96f
+
+	measure 'G + A' = SUM(statistics_attack[Goals]) + SUM(statistics_passing[Assists])
+		formatString: 0
+		lineageTag: 72bfe885-44c5-4c11-8aa0-fc276a2bd704
+
+	measure 'Tackle %' = ```
+			
+			DIVIDE(
+			    SUM(statistics_defense[Tackles]),
+			    SUM(statistics_defense[Tackles attempted]),
+			    0
+			)
+			
+			    
+			
+			
+			```
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		lineageTag: 7645f5fa-59fc-45b6-a69a-f8714d0bca1b
+
+	measure 'Dribble %' =
+			
+			DIVIDE(
+			    SUM(statistics_passing[Dibbles]),
+			    SUM(statistics_passing[Dribbles attempt]),
+			    0
+			)
+		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		lineageTag: cd9e52c8-53c6-4349-aedc-6758a924e845
 
 	column metrics
 		dataType: string

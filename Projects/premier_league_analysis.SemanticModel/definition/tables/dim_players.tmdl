@@ -178,13 +178,6 @@ table dim_players
 
 		annotation SummarizationSetBy = Automatic
 
-	column new_cards
-		type: calculated
-		lineageTag: 79599d67-63fd-4e46-bbd6-6ba61396934e
-		summarizeBy: sum
-
-		annotation SummarizationSetBy = Automatic
-
 	partition dim_players = m
 		mode: import
 		source =
