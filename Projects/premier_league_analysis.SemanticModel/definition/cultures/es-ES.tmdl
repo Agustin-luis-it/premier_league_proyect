@@ -989,7 +989,7 @@ cultureInfo es-ES
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "_measures",
-			          "ConceptualProperty": "_color_list_slicer"
+			          "ConceptualProperty": "_color_list_slicer_group"
 			        }
 			      },
 			      "State": "Generated",

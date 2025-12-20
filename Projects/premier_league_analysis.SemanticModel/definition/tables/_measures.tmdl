@@ -1,7 +1,7 @@
 table _measures
 	lineageTag: 3b5b4d14-7f87-449d-ba5c-3418c25ab9f7
 
-	measure _color_list_slicer = ```
+	measure _color_list_slicer_group = ```
 			
 			VAR seleccion = SELECTEDVALUE(_field_parameters[Parameter Group])
 			RETURN
@@ -415,6 +415,7 @@ table _measures
 
 	measure 'G + A' = SUM(statistics_attack[Goals]) + SUM(statistics_passing[Assists])
 		formatString: 0
+		displayFolder: _visuals_player_details
 		lineageTag: 72bfe885-44c5-4c11-8aa0-fc276a2bd704
 
 	measure 'Tackle %' = ```
@@ -430,6 +431,7 @@ table _measures
 			
 			```
 		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: _visuals_player_details
 		lineageTag: 7645f5fa-59fc-45b6-a69a-f8714d0bca1b
 
 	measure 'Dribble %' =
@@ -440,6 +442,7 @@ table _measures
 			    0
 			)
 		formatString: 0.0\ %;-0.0\ %;0.0\ %
+		displayFolder: _visuals_player_details
 		lineageTag: cd9e52c8-53c6-4349-aedc-6758a924e845
 
 	column metrics

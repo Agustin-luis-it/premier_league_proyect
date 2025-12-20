@@ -62,8 +62,7 @@ table _field_parameters
 				    ("Interceptions", NAMEOF('statistics_defense'[Interceptions]), 8, "Defense"),
 				    ("Tackles", NAMEOF('statistics_defense'[Tackles]), 9, "Defense"),
 				    ("Tackles attempted", NAMEOF('statistics_defense'[Tackles attempted]), 10, "Defense"),
-				    ("Tackle %", NAMEOF([Tackle %]), 11, "Defense"),
-				    ("Rojas", NAMEOF(dim_players[TR]), 11, "Defense")
+				    ("Tackle %", NAMEOF([Tackle %]), 11, "Defense")
 				}
 
 	annotation PBI_Id = 6b85699d6d8542e7a8db467ad481bde2
